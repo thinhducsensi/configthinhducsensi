@@ -1,0 +1,24 @@
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+proxies:
+  - name: "MyProxy"
+    type: socks5
+    server: change5.owlproxy.com
+    port: 7778
+    username: VMBjM3wj9510_custom_zone_US_st__city_sid_69041435_time_90
+    password: 1010481
+
+proxy-groups:
+  - name: "Proxy-Selector"
+    type: select
+    proxies:
+      - MyProxy
+      - DIRECT
+
+rules:
+  - MATCH,DIRECT
