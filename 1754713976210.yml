@@ -8,10 +8,10 @@ external-controller: 127.0.0.1:9090
 proxies:
   - name: "My-SOCKS5"
     type: socks5
-    server: change5.owlproxy.com
-    port: 7778
-    username: "qLOyFDn5Mo20_custom_zone_US_st__city_sid_88622737_time_90"
-    password: "1186264"
+    server: 191.101.181.178
+    port: 6931
+    username: "proxymini"
+    password: "proxymini"
     udp: true
 
 proxy-groups:
