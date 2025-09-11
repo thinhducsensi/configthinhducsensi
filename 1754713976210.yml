@@ -23,10 +23,12 @@ proxy-groups:
 
 rules:
   - DOMAIN-SUFFIX,ipx.ac,My-SOCKS5
+  - DOMAIN-SUFFIX,ipinfo.io,My-SOCKS5
   - DOMAIN-SUFFIX,myip.com,My-SOCKS5
   - DOMAIN-SUFFIX,microsoftonline.com,My-SOCKS5
   - DOMAIN-KEYWORD,edu,My-SOCKS5
   - DOMAIN-KEYWORD,sheerid,My-SOCKS5
+  - DOMAIN-SUFFIX,figma.com,My-SOCKS5
   - DOMAIN-SUFFIX,play.google.com,My-SOCKS5
   - DOMAIN-SUFFIX,google.com,My-SOCKS5
   - DOMAIN-SUFFIX,colab.research.google.com,My-SOCKS5
