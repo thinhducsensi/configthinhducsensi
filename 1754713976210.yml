@@ -10,7 +10,7 @@ proxies:
     type: socks5
     server: change5.owlproxy.com
     port: 7778
-    username: "yZMtdCprGKA0_custom_zone_US_st__city_sid_64216461_time_90"
+    username: "yZMtdCprGKA0_custom_zone_US_st__city_sid_64049855_time_90"
     password: "1332457"
     udp: true
 
