@@ -1,9 +1,26 @@
 port: 7890
 socks-port: 7891
 allow-lan: true
-mode: Rule
+mode: rule
 log-level: info
 external-controller: 127.0.0.1:9090
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  listen: 0.0.0.0:53
+  nameserver:
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback-filter:
+    geoip: true
+    geoip-code: US
+    ipcidr:
+      - 240.0.0.0/4
 
 proxies:
   - name: "My-SOCKS5"
@@ -15,22 +32,25 @@ proxies:
     udp: true
 
 proxy-groups:
-  - name: "Auto"
+  - name: "Proxy"
     type: select
     proxies:
       - "My-SOCKS5"
       - "DIRECT"
 
 rules:
-  - DOMAIN-SUFFIX,ipx.ac,My-SOCKS5
-  - DOMAIN-SUFFIX,ipinfo.io,My-SOCKS5
-  - DOMAIN-SUFFIX,myip.com,My-SOCKS5
-  - DOMAIN-SUFFIX,microsoftonline.com,My-SOCKS5
-  - DOMAIN-KEYWORD,edu,My-SOCKS5
-  - DOMAIN-KEYWORD,sheerid,My-SOCKS5
-  - DOMAIN-SUFFIX,figma.com,My-SOCKS5
-  - DOMAIN-SUFFIX,play.google.com,My-SOCKS5
-  - DOMAIN-SUFFIX,google.com,My-SOCKS5
-  - DOMAIN-SUFFIX,colab.research.google.com,My-SOCKS5
-  - DOMAIN-SUFFIX,gemini.google,My-SOCKS5
+  # Chỉ các domain cần thiết mới đi proxy
+  - DOMAIN-SUFFIX,ipx.ac,Proxy
+  - DOMAIN-SUFFIX,ipinfo.io,Proxy
+  - DOMAIN-SUFFIX,myip.com,Proxy
+  - DOMAIN-SUFFIX,microsoftonline.com,Proxy
+  - DOMAIN-KEYWORD,edu,Proxy
+  - DOMAIN-KEYWORD,sheerid,Proxy
+  - DOMAIN-SUFFIX,figma.com,Proxy
+  - DOMAIN-SUFFIX,play.google.com,Proxy
+  - DOMAIN-SUFFIX,google.com,Proxy
+  - DOMAIN-SUFFIX,colab.research.google.com,Proxy
+  - DOMAIN-SUFFIX,gemini.google,Proxy
+
+  # Mặc định mọi thứ khác đi trực tiếp
   - MATCH,DIRECT
