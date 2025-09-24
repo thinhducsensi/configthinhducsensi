@@ -1,0 +1,36 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+proxies:
+  - name: "My-SOCKS5"
+    type: socks5
+    server: change5.owlproxy.com
+    port: 7778
+    username: "GF8Mzqu6HC30_custom_zone_JP_st__city_sid_99872413_time_90"
+    password: "1461894"
+    udp: true
+
+proxy-groups:
+  - name: "Auto"
+    type: select
+    proxies:
+      - "My-SOCKS5"
+      - "DIRECT"
+
+rules:
+  - DOMAIN-SUFFIX,ipx.ac,My-SOCKS5
+  - DOMAIN-SUFFIX,ipinfo.io,My-SOCKS5
+  - DOMAIN-SUFFIX,myip.com,My-SOCKS5
+  - DOMAIN-SUFFIX,microsoftonline.com,My-SOCKS5
+  - DOMAIN-KEYWORD,edu,My-SOCKS5
+  - DOMAIN-KEYWORD,sheerid,My-SOCKS5
+  - DOMAIN-SUFFIX,figma.com,My-SOCKS5
+  - DOMAIN-SUFFIX,play.google.com,My-SOCKS5
+  - DOMAIN-SUFFIX,google.com,My-SOCKS5
+  - DOMAIN-SUFFIX,colab.research.google.com,My-SOCKS5
+  - DOMAIN-SUFFIX,gemini.google,My-SOCKS5
+  - MATCH,DIRECT
